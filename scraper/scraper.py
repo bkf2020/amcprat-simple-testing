@@ -116,9 +116,9 @@ for test in tests:
 				f.write('\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n')
 				
 				if(test == "amc8"):
-					f.write('\t<link rel="stylesheet" href="../../../styleproblems.css">\n')
+					f.write('\t<link rel="stylesheet" href="../../styleproblems.css">\n')
 				else:
-					f.write('\t<link rel="stylesheet" href="../../../../styleproblems.css">\n')
+					f.write('\t<link rel="stylesheet" href="../../../styleproblems.css">\n')
 				
 				f.write('</head>\n')
 				f.write('<body>\n')
