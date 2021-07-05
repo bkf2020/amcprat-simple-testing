@@ -100,12 +100,17 @@ counter = 0
 for test in tests:
 	for level in levels:
 		try:
-			os.mkdir("problemsets/" + test + "/" + month)
+			os.mkdir("problemsets/" + test + "/" + year)
 		except:
 			pass
 
 		try:
-			os.mkdir("problemsets/" + test + "/" + month + "/" + day)
+			os.mkdir("problemsets/" + test + "/" + year + "/" + month)
+		except:
+			pass
+
+		try:
+			os.mkdir("problemsets/" + test + "/" + year + "/" month + "/" + day)
 		except:
 			pass
 
