@@ -7,8 +7,8 @@ from shutil import copyfile
 def generate_problem_url_name(test, level):
 	if(test == "aime"):
 		year = random.randint(2015, 2021)
-		year = str(year) 
-		
+		year = str(year)
+
 		test_type = "I"
 		if(random.randint(0, 1) == 1):
 			test_type = "II"
@@ -24,15 +24,15 @@ def generate_problem_url_name(test, level):
 		problem = str(problem)
 		if(len(problem) == 1):
 			problem = "0" + problem
-	
-		problem_url = "../../../../" + test + "/" + year + "/" + test_type + "/" + problem	
-		problem_name = year + " " + test.upper() + " " + test_type + " Problem " + problem	
+
+		problem_url = "../../../../../" + test + "/" + year + "/" + test_type + "/" + problem
+		problem_name = year + " " + test.upper() + " " + test_type + " Problem " + problem
 		return [problem_url, problem_name]
-	
+
 	elif(test == "amc10" or test == "amc12"):
 		year = random.randint(2015, 2021)
 		year = str(year)
-		
+
 		test_type = "A"
 		if(random.randint(0, 1) == 1):
 			test_type = "B"
@@ -48,15 +48,15 @@ def generate_problem_url_name(test, level):
 		problem = str(problem)
 		if(len(problem) == 1):
 			problem = "0" + problem
-		
-		problem_url = "../../../../" + test + "/" + year + "/" + test_type + "/" + problem	
-		problem_name = year + " " + test.upper() + test_type + " Problem " + problem	
+
+		problem_url = "../../../../../" + test + "/" + year + "/" + test_type + "/" + problem
+		problem_name = year + " " + test.upper() + test_type + " Problem " + problem
 		return [problem_url, problem_name]
-	
+
 	elif(test == "amc8"):
 		year = random.randint(2014, 2020)
 		year = str(year)
-		
+
 		problem = 0
 		if(level == "easy"):
 			problem = random.randint(1, 15)
@@ -69,9 +69,9 @@ def generate_problem_url_name(test, level):
 		problem = str(problem)
 		if(len(problem) == 1):
 			problem = "0" + problem
-		
-		problem_url = "../../../../" + test + "/" + year + "/" + problem	
-		problem_name = year + " " + test.upper() + " Problem " + problem	
+
+		problem_url = "../../../../../" + test + "/" + year + "/" + problem
+		problem_name = year + " " + test.upper() + " Problem " + problem
 		return [problem_url, problem_name]
 
 ####################################################################################################
@@ -79,6 +79,7 @@ def generate_problem_url_name(test, level):
 # setting utc time
 
 now_utc = datetime.now(timezone.utc)
+year = str(now_utc.year)
 month = str(now_utc.month)
 if(len(month) == 1):
 	month = "0" + month
@@ -107,14 +108,14 @@ for test in tests:
 			os.mkdir("problemsets/" + test + "/" + month + "/" + day)
 		except:
 			pass
-		
-		path = "problemsets/" + test + "/" + month + "/" + day + "/" + level + ".html"
+
+		path = "problemsets/" + test + "/" + year + "/" + month + "/" + day + "/" + level + ".html"
 		copyfile("problemsets/" + test + "/" + level + ".html", path)
 		problemset_links[counter].find('a')['href'] = path[:-5]
 		soup = BeautifulSoup(open(path), features="html5lib")
-		
+
 		visited = {}
-		
+
 		for q in range(1, 6):
 			link_to_change = soup.find(id="problem"+str(q))
 			problem_url_name = generate_problem_url_name(test, level)
@@ -123,10 +124,10 @@ for test in tests:
 				problem_url_name = generate_problem_url_name(test, level)
 
 			visited[problem_url_name[0]] = True
-			
+
 			link_to_change["href"] = problem_url_name[0]
 			link_to_change.string = problem_url_name[1]
-		
+
 		page = open(path, "w")
 		page.write(str(soup))
 
