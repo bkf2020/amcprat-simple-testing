@@ -110,7 +110,7 @@ for test in tests:
 			pass
 
 		try:
-			os.mkdir("problemsets/" + test + "/" + year + "/" month + "/" + day)
+			os.mkdir("problemsets/" + test + "/" + year + "/" + month + "/" + day)
 		except:
 			pass
 
