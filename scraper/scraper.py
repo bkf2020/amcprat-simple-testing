@@ -122,6 +122,16 @@ for test in tests:
 				
 				f.write('</head>\n')
 				f.write('<body>\n')
+				f.write('<div class="annoucement">\n')
+				f.write('<h2>IMPORTANT ANNOUCEMENT</h2>\n')
+				f.write('<p>\n')
+				f.write('Due to copyright issues AMCPRAT and AMCPRAT-Simple\n')
+				f.write('are shutting down. They will be closed in 3 weeks after\n')
+				f.write('this message: <a class="annoucementlink" href="https://www.timeanddate.com/worldclock/fixedtime.html?msg=amcprat+and+amcprat-simple+shutting+down&year=2021&month=Oct&day=03&hour=05&min=00&sec=00&p1=1440" target="_blank" rel="noopener noreferrer">Sunday, October 3, 2021 5:00 am UTC.</a>\n')
+				f.write('More information can be found <a class="annoucementlink" href="https://bkf2020.github.io/amcprat-shutdown">here.</a>\n')
+				f.write('</p>\n')
+				f.write('</div>\n')
+
 				f.write('\t<h1>AMCPRAT Problem</h1>\n')
 				f.write('\t<h3><em>Do not give up! Zoom in if diagrams are unclear!</em></h3>\n')
 				f.write('\t<hr/>\n')
